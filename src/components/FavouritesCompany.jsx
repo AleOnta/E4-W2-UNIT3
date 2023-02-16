@@ -15,13 +15,14 @@ const FavouritesCompany = () => {
             <ListGroup.Item key="8">AZIENDE SALVATE</ListGroup.Item>
             {favourites.map((data, i) => {
               return (
-                <ListGroup.Item key={data.id} className="d-flex justify-content-between align-items-center">
+                <ListGroup.Item key={i} className="d-flex justify-content-between align-items-center">
                   <Link key={i} to={`/${data.company_name}`}>
                     {data.company_name}
                   </Link>
                   <span>
                     <JobModal prop={data} />
                     <Button
+                      key={i}
                       variant="danger"
                       className="ml-2"
                       onClick={() => {

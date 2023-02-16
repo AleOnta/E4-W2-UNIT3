@@ -30,13 +30,10 @@ const MainSearch = () => {
   };
 
   return (
-    <Container>
+    <Container className="mt-5">
       <Row>
         <Col xs={10} className="mx-auto my-3">
           <h1>Remote Jobs Search</h1>
-          <Link to="/favourites-company" className="btn btn-success">
-            View your favourite company
-          </Link>
         </Col>
         <Col xs={10} className="mx-auto">
           <Form onSubmit={handleSubmit}>
