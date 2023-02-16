@@ -1,10 +1,12 @@
-import { Container, Row, Col, ListGroup } from "react-bootstrap";
+import { Container, Row, Col, ListGroup, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { BsFillTrashFill } from "react-icons/bs";
 import JobModal from "./JobModal";
 
 const FavouritesCompany = () => {
   const favourites = useSelector((state) => state.favourites.favCompany);
+  const dispatch = useDispatch();
   return (
     <Container className="mt-5">
       <Row className="d-flex justify-content-center align-items-center mt-5">
@@ -17,7 +19,21 @@ const FavouritesCompany = () => {
                   <Link key={i} to={`/${data.company_name}`}>
                     {data.company_name}
                   </Link>
-                  <JobModal prop={data} />
+                  <span>
+                    <JobModal prop={data} />
+                    <Button
+                      variant="danger"
+                      className="ml-2"
+                      onClick={() => {
+                        dispatch({
+                          type: "REMOVE_FROM_FAVOURITES",
+                          payload: i,
+                        });
+                      }}
+                    >
+                      <BsFillTrashFill />
+                    </Button>
+                  </span>
                 </ListGroup.Item>
               );
             })}

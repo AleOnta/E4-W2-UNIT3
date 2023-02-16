@@ -15,6 +15,14 @@ const searchReducer = (state = initialState, action) => {
         },
       };
 
+    case "REMOVE_FROM_FAVOURITES":
+      return {
+        ...state,
+        favourites: {
+          ...state.favourites,
+          favCompany: state.favourites.favCompany.filter((_, i) => i !== action.payload),
+        },
+      };
     default:
       return state;
   }
